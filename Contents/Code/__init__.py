@@ -31,6 +31,7 @@ def Overview(title, path):
 
 	oc = ObjectContainer(title2=title)
 	json_obj = JSON.ObjectFromURL('%s/%s' % (API_BASE_URL, path))
+	episodes = []
 
 	for video in json_obj:
 
@@ -45,6 +46,8 @@ def Overview(title, path):
 			if 'stills' in video and video['stills']: thumbs.append(video['stills'][0]['url'])
 			if video['series']['image']: thumbs.append(video['series']['image'])
 
+			broadcasted_at = video['broadcasted_at']
+
 		elif 'broadcasts/' in path: # Gemist
 
 			title = '%s - %s' % (video['episode']['series']['name'], video['episode']['name']) if video['episode']['series']['name'].lower() not in video['episode']['name'].lower() else video['episode']['name']
@@ -57,6 +60,8 @@ def Overview(title, path):
 			if 'stills' in video['episode'] and video['episode']['stills']: thumbs.append(video['episode']['stills'][0]['url'])
 			if video['episode']['series']['image']: thumbs.append(video['episode']['series']['image'])
 
+			broadcasted_at = video['episode']['broadcasted_at']
+
 		else: # Kijktips
 
 			title = '%s - %s' % (video['episode']['series']['name'], video['name']) if video['episode']['series']['name'].lower() not in video['name'].lower() else video['name']
@@ -68,11 +73,25 @@ def Overview(title, path):
 			if 'stills' in video['episode'] and video['episode']['stills']: thumbs.append(video['episode']['stills'][0]['url'])
 			if video['episode']['series']['image']: thumbs.append(video['episode']['series']['image'])
 
+			broadcasted_at = video['episode']['broadcasted_at']
+
+		episodes.append({
+			'episode_id': episode_id,
+			'title': title,
+			'summary': summary,
+			'thumbs': thumbs,
+			'broadcasted_at': broadcasted_at
+		})
+
+	episodes = sorted(episodes, key=lambda k: k['broadcasted_at'], reverse=True)
+
+	for episode in episodes:
+
 		oc.add(DirectoryObject(
-			key = Callback(Episode, episode_id=episode_id),
-			title = title,
-			summary = summary,
-			thumb = Resource.ContentsOfURLWithFallback(thumbs)
+			key = Callback(Episode, episode_id=episode['episode_id']),
+			title = episode['title'],
+			summary = episode['summary'],
+			thumb = Resource.ContentsOfURLWithFallback(episode['thumbs'])
 		))
 
 	return oc

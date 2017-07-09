@@ -1,6 +1,6 @@
 TITLE = 'NPO'
-API_BASE_URL = 'http://apps-api.uitzendinggemist.nl'
-EPISODE_URL = 'http://www.npo.nl/redirect/00-00-0000/%s'
+API_BASE_URL = 'https://apps-api.uitzendinggemist.nl'
+EPISODE_URL = 'https://www.npo.nl/redirect/00-00-0000/%s'
 DAY = ['Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag', 'Zondag']
 MONTH = ['', 'januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
 

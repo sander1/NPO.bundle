@@ -13,7 +13,7 @@ def Start():
 
 ####################################################################################################
 @handler('/video/npo', TITLE)
-def MainMenu():
+def MainMenu(**kwargs):
 
 	oc = ObjectContainer()
 
@@ -27,7 +27,7 @@ def MainMenu():
 
 ####################################################################################################
 @route('/video/npo/overview')
-def Overview(title, path):
+def Overview(title, path, **kwargs):
 
 	oc = ObjectContainer(title2=title)
 	json_obj = JSON.ObjectFromURL('%s/%s' % (API_BASE_URL, path))
@@ -98,7 +98,7 @@ def Overview(title, path):
 
 ####################################################################################################
 @route('/video/npo/episode/{episode_id}')
-def Episode(episode_id):
+def Episode(episode_id, **kwargs):
 
 	video = JSON.ObjectFromURL('%s/episodes/%s.json' % (API_BASE_URL, episode_id))
 
@@ -131,7 +131,7 @@ def Episode(episode_id):
 
 ####################################################################################################
 @route('/video/npo/series/{series_id}')
-def Series(series_id):
+def Series(series_id, **kwargs):
 
 	json_obj = JSON.ObjectFromURL('%s/series/%s.json' % (API_BASE_URL, series_id))
 
@@ -161,7 +161,7 @@ def Series(series_id):
 
 ####################################################################################################
 @route('/video/npo/ondemand')
-def OnDemand():
+def OnDemand(**kwargs):
 
 	oc = ObjectContainer(title2='Gemist')
 	delta = Datetime.Delta(days=1)
@@ -181,7 +181,7 @@ def OnDemand():
 
 ####################################################################################################
 @route('/video/npo/az')
-def AZ():
+def AZ(**kwargs):
 
 	oc = ObjectContainer(title2='Programma\'s A-Z')
 

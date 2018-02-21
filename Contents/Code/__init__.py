@@ -17,7 +17,7 @@ def MainMenu(**kwargs):
 
 	oc = ObjectContainer()
 
-	oc.add(DirectoryObject(key=Callback(Overview, title='Kijktips', path='tips.json'), title='Kijktips'))
+#	oc.add(DirectoryObject(key=Callback(Overview, title='Kijktips', path='tips.json'), title='Kijktips'))
 	oc.add(DirectoryObject(key=Callback(Overview, title='Populair', path='episodes/popular.json'), title='Populair'))
 	oc.add(DirectoryObject(key=Callback(Overview, title='Meest bekeken', path='episodes/trending.json'), title='Meest bekeken'))
 	oc.add(DirectoryObject(key=Callback(OnDemand), title='Gemist'))

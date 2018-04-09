@@ -1,0 +1,8 @@
+[
+	{
+		"id": "force_transcode",
+		"type": "bool",
+		"label": "Force Transcode",
+		"default": "false"
+	}
+]

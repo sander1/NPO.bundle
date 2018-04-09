@@ -1,6 +1,5 @@
 TOKEN_URL = 'https://ida.omroep.nl/app.php/auth'
 STREAM_URL = 'https://ida.omroep.nl/app.php/%s?adaptive=yes&token=%s'
-RE_VARIANTS = Regex('RESOLUTION=\d+x(\d+).*\n(.+\.m3u8)')
 
 HTTP_HEADERS = {
 	'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/602.3.12 (KHTML, like Gecko) Version/10.0.2 Safari/602.3.12',
